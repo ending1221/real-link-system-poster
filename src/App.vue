@@ -69,7 +69,7 @@ setup() {
 			window.print();
 			clearTimeout(timer);
 			showAlert.value = true;
-		}, 500)
+		}, 1000)
 	}
 	const checkData = () => {
 		nameState.value = '';

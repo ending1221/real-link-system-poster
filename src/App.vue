@@ -15,7 +15,7 @@
 		</label>
 		<label class="data-item" for="id">
 			<span>場所代碼 : </span>
-			<input id="id" v-model="formatId" maxlength="18" />
+			<input id="id" v-model="formatId" maxlength="18" @keypress="isNumber($event)" />
 			<span class="wrong" v-if="idState !== ''">{{idState}}</span>
 		</label>
 		<button @click="openPoster">產生海報</button>
@@ -57,7 +57,7 @@ setup() {
 	}
 	const formatId = computed({
 		get: () => id.value,
-		set: (val) => {id.value = val.replace(/[^0-9A-Za-z]/g,'').replace(/(.{4})/g,'$1 ').replace(/ $/g,'')}
+		set: (val) => {id.value = val.replace(/[^0-9.]/g,'').replace(/(.{4})/g,'$1 ').replace(/ $/g,'')}
 	})
 	const imgOnLoad = () => {
 		window.print();
@@ -103,6 +103,15 @@ setup() {
 			qrcodeUrl.value = url
 		});
 	};
+	const isNumber = (evt) => {
+      evt = (evt) ? evt : window.event;
+      let charCode = (evt.which) ? evt.which : evt.keyCode;
+      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
+        evt.preventDefault();
+      } else {
+        return true;
+      }
+    }
 	
 	return {
 		name,
@@ -115,7 +124,8 @@ setup() {
 		idState,
 		closeAlert,
 		showAlert,
-		imgOnLoad
+		imgOnLoad,
+		isNumber
 	}
 }
 }

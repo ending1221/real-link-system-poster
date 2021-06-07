@@ -24,7 +24,7 @@
 <div class="poster-page" v-if="showPoster">
 	<picture>
 		<source srcset="./assets/bg.webp" type="image/webp">
-		<img id="poster-page-bg" src="./assets/bg.png" alt="實聯制海報背景">
+		<img @load="imgOnLoad" id="poster-page-bg" src="./assets/bg.png" alt="實聯制海報背景">
 	</picture>
 	<img id="qrcode" v-if="qrcodeUrl !== ''" :src="qrcodeUrl" alt="">
 	<p id="poster-name">{{name}}</p>
@@ -59,17 +59,15 @@ setup() {
 		get: () => id.value,
 		set: (val) => {id.value = val.replace(/[^0-9A-Za-z]/g,'').replace(/(.{4})/g,'$1 ').replace(/ $/g,'')}
 	})
+	const imgOnLoad = () => {
+		window.print();
+		showAlert.value = true;
+	}
 	const openPoster = () => {
 		const dataIsCorrect = checkData();
 		if (!dataIsCorrect) return
 		getQrcodeUrl();
 		showPoster.value = true;
-
-		let timer = setTimeout(()=>{
-			window.print();
-			clearTimeout(timer);
-			showAlert.value = true;
-		}, 1000)
 	}
 	const checkData = () => {
 		nameState.value = '';
@@ -77,7 +75,6 @@ setup() {
 
 		if (name.value === '') nameState.value = '請填寫場所名稱!';
 		if (id.value.length !== 18) idState.value = '場所代碼長度有誤!';
-
 		if (nameState.value !== '' || idState.value !== '') {
 			return false
 		} else {
@@ -117,7 +114,8 @@ setup() {
 		nameState,
 		idState,
 		closeAlert,
-		showAlert
+		showAlert,
+		imgOnLoad
 	}
 }
 }

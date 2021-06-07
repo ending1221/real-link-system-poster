@@ -22,7 +22,10 @@
 	</div>
 </div>
 <div class="poster-page" v-if="showPoster">
-	<img id="poster-page-bg" src="./assets/bg.png" alt="實聯制海報背景">
+	<picture>
+		<source srcset="./assets/bg.webp" type="image/webp">
+		<img id="poster-page-bg" src="./assets/bg.png" alt="實聯制海報背景">
+	</picture>
 	<img id="qrcode" v-if="qrcodeUrl !== ''" :src="qrcodeUrl" alt="">
 	<p id="poster-name">{{name}}</p>
 	<p id="poster-id">{{id}}</p>

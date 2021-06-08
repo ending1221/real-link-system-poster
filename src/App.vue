@@ -142,6 +142,9 @@ body, html {
 	-moz-osx-font-smoothing: grayscale;
 	color: #fff;
 }
+.container {
+	min-width: 480px;
+}
 .alert {
 	position: absolute;
 	background-color: rgba(255, 255, 255, 0.8);

@@ -1,24 +1,19 @@
-# real-link-system-poster
+# 簡訊實聯制海報產生器
 
-## Project setup
-```
-npm install
-```
+[場所代碼申請連結 - 請點此](https://ending1221.github.io/real-link-system-poster/)
+[場所代碼申請連結 - 請點此](https://emask.taiwan.gov.tw/real/?fbclid=IwAR2EhCyHnQKXrEozNYvDdDBQkMdHTnQ4IJyEAF3BvR8ut3HcqSYHUJqBf3A)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 軟體簡介
 
-### Compiles and minifies for production
-```
-npm run build
-```
+因應政府實施簡訊實聯制，大部分店家無法自行製圖，僅能貼單純的 QR-Code 在外，更發生有部分 QR-Code 被有心人士做替換的事件。
+因此做了此產生器，方便無法製圖的店家做使用。
 
-### Lints and fixes files
-```
-npm run lint
-```
+## 使用說明：
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+① 請先至簡訊實聯制 QR Code登記作業申請場所代碼
+② 請輸入正確的場所名稱、場所代碼
+③ 按下產生海報按鈕，即可列印實聯制海報
+
+> 海報設計 @ending1221
+> 軟體開發 @ending1221
+
